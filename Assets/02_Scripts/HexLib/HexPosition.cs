@@ -22,6 +22,7 @@ public struct HexPosition
     public static HexPosition AxisZ = RightDown;
     public static HexPosition Zero = new HexPosition(0, 0);
 
+    [SerializeField]
     public int x, y;
 
     public HexPosition(int x, int y)

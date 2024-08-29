@@ -12,20 +12,20 @@ public enum EHexDirection
     LeftUp,
 }
 
-public class HexNode
-{
-    // Hex 좌표 위치.
-    public Vector2Int HexPosition;
+//public class HexNode
+//{
+//    // Hex 좌표 위치.
+//    public Vector2Int HexPosition;
 
-    // 월드 위치.
-    public Vector3 WorldPosition;
+//    // 월드 위치.
+//    public Vector3 WorldPosition;
 
-    public bool IsWalkable;
+//    public bool IsWalkable;
 
-    public HexNode(Vector2Int hexPos, Vector3 worldPos, bool isWalkable)
-    {
-        HexPosition = hexPos;
-        WorldPosition = worldPos;
-        IsWalkable = isWalkable;
-    }
-}
+//    public HexNode(Vector2Int hexPos, Vector3 worldPos, bool isWalkable)
+//    {
+//        HexPosition = hexPos;
+//        WorldPosition = worldPos;
+//        IsWalkable = isWalkable;
+//    }
+//}
