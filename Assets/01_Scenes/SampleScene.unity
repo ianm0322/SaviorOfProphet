@@ -154,6 +154,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xSize: 8
   ySize: 8
+  xDistance: 2
+  yDistance: 2
+  tilePrefab: {fileID: 5439409364615826970, guid: 91d40c281806c0847a0e24df3ae4d4bd, type: 3}
+  gridAxis: 0
 --- !u!4 &232209627
 Transform:
   m_ObjectHideFlags: 0
@@ -230,7 +234,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

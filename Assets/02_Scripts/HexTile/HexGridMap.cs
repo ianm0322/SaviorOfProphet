@@ -5,21 +5,10 @@ using UnityEngine;
 
 namespace Glorynuts.HexGridMap
 {
-    public class HexGridMapNode
+    public enum EGridAxis
     {
-        public HexPosition gridPosition;
-        public Vector3 worldPosition;
-
-        public HexPosition GridPosition
-        {
-            get => gridPosition;
-            set => gridPosition = value;
-        }
-
-        public HexGridMapNode(int x, int y)
-        {
-            this.GridPosition = new HexPosition(x, y);
-        }
+        XY,
+        XZ
     }
 
     public class HexGridMap : MonoBehaviour
@@ -28,23 +17,54 @@ namespace Glorynuts.HexGridMap
         int xSize, ySize;
 
         [SerializeField]
+        float xDistance, yDistance;
+
+        [SerializeField]
         GameObject tilePrefab;
 
+        [SerializeField]
+        EGridAxis gridAxis;
 
         #region [ Private Field ]
-        HexGridMapNode[,] gridMap;
+        GameObject[,] gridMap;
         #endregion
         private void Awake()
         {
             // Setup grid map 2d array.
-            gridMap = new HexGridMapNode[xSize, ySize];
+            gridMap = new GameObject[xSize, ySize];
             for (int _x = 0; _x < xSize; ++_x)
             {
                 for (int _y = 0; _y < ySize; _y++)
                 {
-                    gridMap[_x, _y] = new HexGridMapNode(_x, _y);
+                    GameObject instance = Instantiate(tilePrefab);
+                    gridMap[_x, _y] = instance;
+                    gridMap[_x, _y].transform.position = TransformCoord(_x, _y);
+                    instance.transform.SetParent(this.transform);
                 }
             }
+        }
+
+        public Vector3 TransformCoord(int x, int y)
+        {
+            Vector3 ret = this.transform.position;
+
+            switch (gridAxis)
+            {
+                case EGridAxis.XY:
+                    ret.x -= xDistance * (xSize - 1 + ySize * 0.5f) * 0.5f;
+                    ret.x += xDistance * (x + y * 0.5f);
+                    ret.y -= yDistance * (ySize - 1) * 0.5f;
+                    ret.y += yDistance * y;
+                    break;
+                case EGridAxis.XZ:
+                    ret.x -= xDistance * (xSize - 1 + ySize * 0.5f) * 0.5f;
+                    ret.x += xDistance * (x + y * 0.5f);
+                    ret.z -= yDistance * (ySize - 1) * 0.5f;
+                    ret.z += yDistance * y;
+                    break;
+            }
+
+            return ret;
         }
 
         // Returns pos is inside of grid map bounds.
@@ -54,11 +74,11 @@ namespace Glorynuts.HexGridMap
         }
 
         // Returns node at pos of grid map
-        public Vector3? GetWorldPosition(HexPosition pos)
+        public GameObject GetWorldPosition(HexPosition pos)
         {
             if (IsValidPosition(pos))
             {
-                return gridMap[pos.x, pos.y].worldPosition;
+                return gridMap[pos.x, pos.y];
             }
             else
             {
