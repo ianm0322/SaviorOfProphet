@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,7 @@ public enum EHexAxis
     Z   // axis of (1, -1)
 }
 
+[Serializable]
 public struct HexPosition
 {
     public static HexPosition RightMid = new HexPosition(1, 0);

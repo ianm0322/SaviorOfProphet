@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Glorynuts.HexGridMap
+namespace Glorynuts.HexGridSystem
 {
     public enum EGridAxis
     {
@@ -24,6 +24,14 @@ namespace Glorynuts.HexGridMap
 
         [SerializeField]
         EGridAxis gridAxis;
+
+        public GameObject this[int x, int y]
+        {
+            get
+            {
+                return IsValidPosition(new HexPosition(x, y)) ? gridMap[x, y] : null;
+            }
+        }
 
         #region [ Private Field ]
         GameObject[,] gridMap;
