@@ -382,6 +382,7 @@ GameObject:
   m_Component:
   - component: {fileID: 740974650}
   - component: {fileID: 740974649}
+  - component: {fileID: 740974651}
   m_Layer: 0
   m_Name: Test Unit
   m_TagString: Untagged
@@ -404,6 +405,7 @@ MonoBehaviour:
   location:
     x: 2
     y: 2
+  moveSpeed: 5
 --- !u!4 &740974650
 Transform:
   m_ObjectHideFlags: 0
@@ -420,6 +422,18 @@ Transform:
   - {fileID: 219934454}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &740974651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740974648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1db192b774f74a94f9dbd206d0b05752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
